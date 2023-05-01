@@ -36,4 +36,8 @@ describe('palindrome tests', () => {
   it("Knows that 'Mo m' is a palindrome", () => {
     expect(palindrome('Mo m')).toBe(true);
   })
+
+  it("Knows that 'Was It A Rat I Saw' is a palindrome", () => {
+    expect(palindrome('Was It A Rat I Saw')).toBe(true);
+  })
 })
