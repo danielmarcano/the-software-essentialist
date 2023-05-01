@@ -35,11 +35,12 @@ describe('PasswordValidator tests', () => {
       expect(result.errors[0].message).toBe('The password should be between 5 and 15 characters long');
     })
 
-    it('Knows that "mario" has a valid length', () => {
+    it('Knows that "mario" is an invalid password', () => {
       const result = PasswordValidator.isValid('mario');
 
-      expect(result.isValid).toBeTruthy();
-      expect(result.errors).toHaveLength(0);
+      expect(result.isValid).toBeFalsy();
+      expect(result.errors[0].type).toBe('MissingUppercaseLetter');
+      expect(result.errors[0].message).toBe('The password should have at least one uppercase letter')
     })
   })
 })
