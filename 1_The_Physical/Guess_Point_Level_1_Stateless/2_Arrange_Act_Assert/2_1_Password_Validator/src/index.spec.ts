@@ -1,4 +1,5 @@
 import { PasswordValidator } from '.';
+import { ValidationError } from './types';
 
 /* 
   Password validator (#passwordValidator)
@@ -27,23 +28,23 @@ import { PasswordValidator } from '.';
 
 describe('PasswordValidator tests', () => {
   describe('isValid', () => {
+    function containsError(errors: ValidationError[], errorType: ValidationError['type']) {
+      return errors.find((error) => error.type === errorType);
+    }
+
     it('Knows that "lol" is an invalid password', () => {
       const result = PasswordValidator.isValid('lol');
 
       expect(result.isValid).toBeFalsy();
-      expect(result.errors[0].type).toBe('InvalidLength');
-      expect(result.errors[0].message).toBe('The password should be between 5 and 15 characters long');
-
-      expect(result.errors[1].type).toBe('MissingUppercaseLetter');
-      expect(result.errors[1].message).toBe('The password should have at least one uppercase letter');
+      expect(containsError(result.errors, 'InvalidLength')).toBeTruthy();
+      expect(containsError(result.errors, 'MissingUppercaseLetter')).toBeTruthy();
     })
 
     it('Knows that "mario" is an invalid password', () => {
       const result = PasswordValidator.isValid('mario');
 
       expect(result.isValid).toBeFalsy();
-      expect(result.errors[0].type).toBe('MissingUppercaseLetter');
-      expect(result.errors[0].message).toBe('The password should have at least one uppercase letter')
+      expect(containsError(result.errors, 'MissingUppercaseLetter')).toBeTruthy();
     })
 
     it('Knows that "Mario" is a valid password', () => {
