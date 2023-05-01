@@ -45,7 +45,10 @@ describe("fizzBuzz tests", () => {
     expect(fizzBuzz(0)).toBe("Invalid number");
   });
 
-  it("Knows that 101 is an invalid number", () => {
-    expect(fizzBuzz(101)).toBe("Invalid number");
+  it.each([
+    [0, "Invalid number"],
+    [101, "Invalid number"],
+  ])("Knows that %p is an invalid number", (numberToConvert, result) => {
+    expect(fizzBuzz(numberToConvert)).toBe(result);
   });
 });
