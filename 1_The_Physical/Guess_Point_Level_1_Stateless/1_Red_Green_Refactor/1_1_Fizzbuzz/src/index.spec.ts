@@ -25,10 +25,10 @@ describe("fizzBuzz tests", () => {
     expect(fizzBuzz(0)).toBe("Invalid number");
   });
 
-  it.each([
-    [0, "Invalid number"],
-    [101, "Invalid number"],
-  ])("Knows that %p is an invalid number", (numberToConvert, result) => {
-    expect(fizzBuzz(numberToConvert)).toBe(result);
-  });
+  it.each([[0], [101]])(
+    "Knows that %p is an invalid number",
+    (numberToConvert) => {
+      expect(fizzBuzz(numberToConvert)).toBe("Invalid number");
+    }
+  );
 });
