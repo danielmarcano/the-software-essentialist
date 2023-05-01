@@ -28,4 +28,8 @@ describe("fizzBuzz tests", () => {
   it("Outputs the given number as a string", () => {
     expect(fizzBuzz(1)).toBe("1");
   });
+
+  it("Knows that 3 is equal to 'Fizz'", () => {
+    expect(fizzBuzz(3)).toBe("Fizz");
+  });
 });
