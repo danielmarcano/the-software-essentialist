@@ -1,8 +1,3 @@
-/**
- *
- * @param numberToConvert A number between 1 and 100
- *
- */
 export function fizzBuzz(numberToConvert: number) {
   if (numberToConvert < 1 || numberToConvert > 100) {
     return "Invalid number";
