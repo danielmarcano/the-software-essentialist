@@ -25,20 +25,8 @@ describe('palindrome tests', () => {
     expect(typeof palindrome('mom')).toBe('boolean');
   })
 
-  it("Knows that 'mom' is a palindrome", () => {
-    expect(palindrome('mom')).toBe(true);
-  })
-
-  it("Knows that 'Mom' is a palindrome", () => {
-    expect(palindrome('Mom')).toBe(true);
-  })
-
-  it("Knows that 'Mo m' is a palindrome", () => {
-    expect(palindrome('Mo m')).toBe(true);
-  })
-
-  it("Knows that 'Was It A Rat I Saw' is a palindrome", () => {
-    expect(palindrome('Was It A Rat I Saw')).toBe(true);
+  it.each([['mom', true], ['Mom', true], ['Mo m', true], ['Was It A Rat I Saw', true]])("Knows that %p is a palindrome", (text, result) => {
+    expect(palindrome(text)).toBe(result);
   })
 
   it("Knows that 'Not a palindrome' is not a palindrome", () => {
