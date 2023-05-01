@@ -1,5 +1,5 @@
 export function palindrome(text: string) {
-  if (text.toLowerCase() === 'mom') {
+  if (text.toLowerCase().replace(' ', '') === 'mom') {
     return true;
   }
 
