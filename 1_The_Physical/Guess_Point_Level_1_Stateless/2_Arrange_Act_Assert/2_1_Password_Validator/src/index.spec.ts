@@ -34,6 +34,13 @@ describe('PasswordValidator tests', () => {
       expect(result.errors[0].type).toBe('InvalidLength');
       expect(result.errors[0].message).toBe('The password should be between 5 and 15 characters long');
     })
+
+    it('Knows that "mario" has a valid length', () => {
+      const result = PasswordValidator.isValid('mario');
+
+      expect(result.isValid).toBeTruthy();
+      expect(result.errors).toHaveLength(0);
+    })
   })
 })
 
