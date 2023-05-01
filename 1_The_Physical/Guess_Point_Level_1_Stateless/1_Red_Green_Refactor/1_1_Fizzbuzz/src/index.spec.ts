@@ -32,4 +32,8 @@ describe("fizzBuzz tests", () => {
   it("Knows that 3 is equal to 'Fizz'", () => {
     expect(fizzBuzz(3)).toBe("Fizz");
   });
+
+  it("Knows that 5 is equal to 'Buzz'", () => {
+    expect(fizzBuzz(5)).toBe("Buzz");
+  });
 });
