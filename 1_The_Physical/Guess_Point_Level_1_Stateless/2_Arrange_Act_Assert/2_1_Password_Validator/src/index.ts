@@ -1,18 +1,18 @@
 export class PasswordValidator {
   static isValid(text: string) {
-    if (text.length >= 5 && text.length <= 15) {
+    if (text.length < 5 || text.length > 15) {
       return {
-        isValid: true,
-        errors: [],
-      };
+        isValid: false,
+        errors: [{
+          type: 'InvalidLength',
+          message: 'The password should be between 5 and 15 characters long'
+        }],
+      }
     }
 
     return {
-      isValid: false,
-      errors: [{
-        type: 'InvalidLength',
-        message: 'The password should be between 5 and 15 characters long'
-      }],
-    }
+      isValid: true,
+      errors: [],
+    };
   }
 }
