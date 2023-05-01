@@ -1,3 +1,7 @@
-export function palindrome() {
-  return true;
+export function palindrome(text: string) {
+  if (text === 'mom') {
+    return true;
+  }
+
+  return false;
 }
