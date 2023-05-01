@@ -25,8 +25,8 @@ describe('palindrome tests', () => {
     expect(typeof palindrome('mom')).toBe('boolean');
   })
 
-  it.each([['mom', true], ['Mom', true], ['Mo m', true], ['Was It A Rat I Saw', true], ['Never Odd or Even', true], ['Never ¢#!?%$ Odd * Or 98 EvEn', true]])("Knows that %p is a palindrome", (text, result) => {
-    expect(palindrome(text)).toBe(result);
+  it.each([['mom'], ['Mom'], ['Mo m'], ['Was It A Rat I Saw'], ['Never Odd or Even'], ['Never ¢#!?%$ Odd * Or 98 EvEn']])("Knows that %p is a palindrome", (text) => {
+    expect(palindrome(text)).toBe(true);
   })
 
   it("Knows that 'Not a palindrome' is not a palindrome", () => {
