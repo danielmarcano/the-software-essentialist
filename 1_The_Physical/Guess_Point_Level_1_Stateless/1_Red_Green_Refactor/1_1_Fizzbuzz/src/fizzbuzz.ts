@@ -1,3 +1,3 @@
-export function fizzBuzz() {
-  return "";
+export function fizzBuzz(numberToConvert: number) {
+  return String(numberToConvert);
 }
