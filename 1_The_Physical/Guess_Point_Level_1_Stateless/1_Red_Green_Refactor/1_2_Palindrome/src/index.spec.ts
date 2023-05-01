@@ -1,4 +1,4 @@
-import { palindrome } from '.'
+import { isPalindrome } from '.'
 
 /*
   Create a palindrome checker that should be able to detect that a string is a palindrome; that is, it is the
@@ -22,14 +22,14 @@ import { palindrome } from '.'
 
 describe('palindrome tests', () => {
   it('Returns a boolean', () => {
-    expect(typeof palindrome('mom')).toBe('boolean');
+    expect(typeof isPalindrome('mom')).toBe('boolean');
   })
 
   it.each([['mom'], ['Mom'], ['Mo m'], ['Was It A Rat I Saw'], ['Never Odd or Even'], ['Never ¢#!?%$ Odd * Or 98 EvEn']])("Knows that %p is a palindrome", (text) => {
-    expect(palindrome(text)).toBe(true);
+    expect(isPalindrome(text)).toBe(true);
   })
 
   it("Knows that 'Not a palindrome' is not a palindrome", () => {
-    expect(palindrome('Not a palindrome')).toBe(false);
+    expect(isPalindrome('Not a palindrome')).toBe(false);
   })
 })
