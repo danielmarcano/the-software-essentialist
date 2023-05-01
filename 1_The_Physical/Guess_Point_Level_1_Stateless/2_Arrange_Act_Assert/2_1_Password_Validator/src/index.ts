@@ -1,12 +1,4 @@
-type ValidationError = {
-  type: string;
-  message: string;
-}
-
-type ValidationResult = {
-  isValid: boolean;
-  errors: ValidationError[];
-}
+import { ValidationResult } from "./types";
 
 export class PasswordValidator {
   static MINIMUM_PASSWORD_LENGTH = 5;
