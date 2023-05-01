@@ -9,6 +9,9 @@ type ValidationResult = {
 }
 
 export class PasswordValidator {
+  static MINIMUM_PASSWORD_LENGTH = 5;
+  static MAXIMUM_PASSWORD_LENGTH = 15;
+
   static UPPERCASE_REG_EX: RegExp = /[A-Z]/g;
 
   static isValid(text: string): ValidationResult {
@@ -16,7 +19,7 @@ export class PasswordValidator {
 
     const hasAtLeastOneUppercaseLetter = PasswordValidator.UPPERCASE_REG_EX.test(text);
 
-    if (text.length < 5 || text.length > 15) {
+    if (text.length < PasswordValidator.MINIMUM_PASSWORD_LENGTH || text.length > PasswordValidator.MAXIMUM_PASSWORD_LENGTH) {
       errors.push({
         type: 'InvalidLength',
         message: 'The password should be between 5 and 15 characters long'
