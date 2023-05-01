@@ -45,6 +45,13 @@ describe('PasswordValidator tests', () => {
       expect(result.errors[0].type).toBe('MissingUppercaseLetter');
       expect(result.errors[0].message).toBe('The password should have at least one uppercase letter')
     })
+
+    it('Knows that "Mario" is a valid password', () => {
+      const result = PasswordValidator.isValid('Mario');
+
+      expect(result.isValid).toBeTruthy();
+      expect(result.errors).toHaveLength(0);
+    })
   })
 })
 
