@@ -1,5 +1,5 @@
 export function fizzBuzz(numberToConvert: number) {
-  if (numberToConvert < 1) {
+  if (numberToConvert < 1 || numberToConvert > 100) {
     return "";
   }
 
