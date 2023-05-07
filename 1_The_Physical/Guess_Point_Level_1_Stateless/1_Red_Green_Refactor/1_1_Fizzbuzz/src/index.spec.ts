@@ -45,8 +45,8 @@ describe("fizzBuzz tests", () => {
     expect(fizzBuzz(5)).toBe("Buzz");
   });
 
-  it("Knows that 15 is equal to 'FizzBuzz'", () => {
-    expect(fizzBuzz(15)).toBe("FizzBuzz");
+  it.each([[15], [45]])("Knows that %p is equal to 'FizzBuzz'", (numberToConvert) => {
+    expect(fizzBuzz(numberToConvert)).toBe("FizzBuzz");
   });
 
   it("Knows that 0 is an invalid number", () => {
