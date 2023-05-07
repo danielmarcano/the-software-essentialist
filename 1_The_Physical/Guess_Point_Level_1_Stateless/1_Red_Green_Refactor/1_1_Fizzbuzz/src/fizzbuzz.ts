@@ -1,4 +1,8 @@
 export function fizzBuzz(numberToConvert: number) {
+  if (numberToConvert < 1) {
+    return "";
+  }
+
   let isMultipleOfThree = numberToConvert % 3 === 0;
   let isMultipleOfFive = numberToConvert % 5 === 0;
 
