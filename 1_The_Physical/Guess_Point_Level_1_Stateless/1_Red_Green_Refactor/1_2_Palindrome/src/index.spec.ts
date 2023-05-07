@@ -20,10 +20,10 @@ import { isPalindrome } from '.'
 
 describe('isPalindrome tests', () => {
   it('Returns a boolean', () => {
-    expect(typeof isPalindrome()).toBe('boolean');
+    expect(typeof isPalindrome('')).toBe('boolean');
   })
 
   it('Knows that "mom" is a palindrome', () => {
-    expect(typeof isPalindrome('mom')).toBe(true);
+    expect(isPalindrome('mom')).toBe(true);
   })
 })
