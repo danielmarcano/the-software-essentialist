@@ -39,4 +39,8 @@ describe("fizzBuzz tests", () => {
   it("Knows that 0 is an invalid number", () => {
     expect(fizzBuzz(0)).toBe("");
   });
+
+  it("Knows that 101 is an invalid number", () => {
+    expect(fizzBuzz(101)).toBe("");
+  });
 });
