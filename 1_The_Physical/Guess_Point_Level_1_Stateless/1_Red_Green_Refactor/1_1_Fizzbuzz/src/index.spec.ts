@@ -17,6 +17,10 @@ import { fizzBuzz } from "./fizzbuzz";
 
 describe("fizzBuzz tests", () => {
   it("Outputs a string", () => {
-    expect(typeof fizzBuzz()).toBe("string");
+    expect(typeof fizzBuzz(0)).toBe("string");
+  });
+
+  it("Outputs the given number as a string", () => {
+    expect(fizzBuzz(1)).toBe("1");
   });
 });
