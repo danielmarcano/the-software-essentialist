@@ -15,6 +15,19 @@ import { fizzBuzz } from "./fizzbuzz";
   - When receiving numbers above 100, it returns "Invalid number"
 */
 
+/*
+  3 returns "Fizz"
+  5 returns "Buzz
+  15 returns "FizzBuzz"
+  9 returns "Fizz"
+  43 returns ""
+  42 returns "Fizz"
+  45 returns "FizzBuzz"
+  102 returns ""
+  -12 returns ""
+  any non-number returns ""
+*/
+
 describe("fizzBuzz tests", () => {
   it("Outputs a string", () => {
     expect(typeof fizzBuzz(0)).toBe("string");
@@ -24,8 +37,8 @@ describe("fizzBuzz tests", () => {
     expect(fizzBuzz(1)).toBe("1");
   });
 
-  it("Knows that 3 is equal to 'Fizz'", () => {
-    expect(fizzBuzz(3)).toBe("Fizz");
+  it.each([[3], [9], [42]])("Knows that %p is equal to 'Fizz'", (numberToConvert) => {
+    expect(fizzBuzz(numberToConvert)).toBe("Fizz");
   });
 
   it("Knows that 5 is equal to 'Buzz'", () => {
