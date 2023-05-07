@@ -1,5 +1,5 @@
 export function isPalindrome(text: string) {
-  if (text === 'mom') {
+  if (text.toLowerCase() === 'mom') {
     return true;
   }
 
