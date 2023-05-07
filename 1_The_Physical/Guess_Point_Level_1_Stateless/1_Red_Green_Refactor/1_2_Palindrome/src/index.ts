@@ -1,5 +1,8 @@
 export function isPalindrome(text: string) {
-  if (text.toLowerCase().replace(' ', '') === 'mom') {
+  const parsedText = text.toLowerCase().replace(/ /g, '');
+  const reversedText = parsedText.split('').reverse().join('');
+
+  if (parsedText === reversedText) {
     return true;
   }
 
