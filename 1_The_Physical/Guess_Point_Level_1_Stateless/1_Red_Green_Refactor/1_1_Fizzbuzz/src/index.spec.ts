@@ -33,8 +33,8 @@ describe("fizzBuzz tests", () => {
     expect(typeof fizzBuzz(0)).toBe("string");
   });
 
-  it("Outputs the given number as a string", () => {
-    expect(fizzBuzz(1)).toBe("1");
+  it.each([[1], [43]])("Outputs %p as a string", (numberToConvert) => {
+    expect(fizzBuzz(numberToConvert)).toBe(String(numberToConvert));
   });
 
   it.each([[3], [9], [42]])("Knows that %p is equal to 'Fizz'", (numberToConvert) => {
