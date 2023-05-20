@@ -20,5 +20,16 @@ describe('PasswordValidator tests', () => {
       })
     })
   })
+
+  describe('It knows passwords should contain at least one digit', () => {
+    it('Knows that "Lalao" is missing a digit', () => {
+      expect(PasswordValidator.isValid('Lalao')).toEqual({
+        isValid: false,
+        errors: [{
+          type: 'missing-digit'
+        }]
+      })
+    })
+  });
 })
 
