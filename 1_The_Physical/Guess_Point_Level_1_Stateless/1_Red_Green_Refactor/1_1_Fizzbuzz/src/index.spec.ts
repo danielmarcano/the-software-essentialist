@@ -9,7 +9,7 @@ describe("fizzBuzz tests", () => {
     expect(fizzBuzz(numberToConvert)).toBe(String(numberToConvert));
   });
 
-  it.each([[3], [9], [42]])("Knows that %p is equal to 'Fizz'", (numberToConvert) => {
+  it.each([[3], [9], [42]])("Knows that %p outputs 'Fizz'", (numberToConvert) => {
     expect(fizzBuzz(numberToConvert)).toBe("Fizz");
   });
 
@@ -17,7 +17,7 @@ describe("fizzBuzz tests", () => {
     expect(fizzBuzz(5)).toBe("Buzz");
   });
 
-  it.each([[15], [45]])("Knows that %p is equal to 'FizzBuzz'", (numberToConvert) => {
+  it.each([[15], [45]])("Knows that %p outputs 'FizzBuzz'", (numberToConvert) => {
     expect(fizzBuzz(numberToConvert)).toBe("FizzBuzz");
   });
 
