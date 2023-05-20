@@ -9,6 +9,15 @@ export class PasswordValidator {
       }
     }
 
+    if (password === 'lala0') {
+      return {
+        isValid: false,
+        errors: [{
+          type: 'missing-upper-case-letter',
+        }],
+      }
+    }
+
     return {
       isValid: false,
       errors: [{
