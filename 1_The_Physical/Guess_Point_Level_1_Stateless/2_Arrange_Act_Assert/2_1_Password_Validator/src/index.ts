@@ -1,6 +1,12 @@
 export class PasswordValidator {
+  static DIGITS_REG_EX = /\d/;
+
+  static hasDigits(password: string): boolean {
+    return PasswordValidator.DIGITS_REG_EX.test(password);
+  }
+
   static isValid(password: string) {
-    if (password === 'Lalao') {
+    if (!PasswordValidator.hasDigits(password)) {
       return {
         isValid: false,
         errors: [{
