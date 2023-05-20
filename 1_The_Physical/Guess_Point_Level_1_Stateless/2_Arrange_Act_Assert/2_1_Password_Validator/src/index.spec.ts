@@ -10,6 +10,15 @@ describe('PasswordValidator tests', () => {
         }]
       })
     })
+
+    it('Knows that "Lal0Lal0Lal0Lal0Lal0Lal0Lal0Lal0" has an invalid length', () => {
+      expect(PasswordValidator.isValid('Lal0Lal0Lal0Lal0Lal0Lal0Lal0Lal0')).toEqual({
+        isValid: false,
+        errors: [{
+          type: 'invalid-length'
+        }]
+      })
+    })
   })
 })
 
