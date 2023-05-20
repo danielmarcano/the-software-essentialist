@@ -1,45 +1,36 @@
 import { PasswordValidator } from './';
 import { PasswordValidatorError } from './types';
 
-describe('PasswordValidator tests', () => {
+describe('PasswordValidator.isValid tests', () => {
   describe('It knows passwords should be between 5 and 15 characters long', () => {
-    it('Knows that "Lal0" has an invalid length', () => {
-      expect(PasswordValidator.isValid('Lal0')).toEqual({
-        isValid: false,
-        errors: [{
-          type: PasswordValidatorError.INVALID_LENGTH
-        }]
-      })
-    })
+    it.each(['Lal0', 'Lal0Lal0Lal0Lal0Lal0Lal0Lal0Lal0', 'thePhysical1234567'])('Knows that %p has an invalid length', (password) => {
+      const result = PasswordValidator.isValid(password);
 
-    it('Knows that "Lal0Lal0Lal0Lal0Lal0Lal0Lal0Lal0" has an invalid length', () => {
-      expect(PasswordValidator.isValid('Lal0Lal0Lal0Lal0Lal0Lal0Lal0Lal0')).toEqual({
-        isValid: false,
-        errors: [{
-          type: PasswordValidatorError.INVALID_LENGTH
-        }]
+      expect(result.isValid).toBeFalsy();
+      expect(result.errors).toContainEqual({
+        type: PasswordValidatorError.INVALID_LENGTH
       })
     })
   })
 
   describe('It knows passwords should contain at least one digit', () => {
-    it('Knows that "Lalao" is missing a digit', () => {
-      expect(PasswordValidator.isValid('Lalao')).toEqual({
-        isValid: false,
-        errors: [{
-          type: PasswordValidatorError.MISSING_DIGIT
-        }]
+    it.each(['Lalao', 'maxwellTheBe'])('Knows that %p is missing a digit', (password) => {
+      const result = PasswordValidator.isValid(password);
+
+      expect(result.isValid).toBeFalsy();
+      expect(result.errors).toContainEqual({
+        type: PasswordValidatorError.MISSING_DIGIT
       })
     })
   });
 
   describe('It knows passwords should contain at least one upper case letter', () => {
-    it('Knows that "lala0" is missing an upper case letter', () => {
-      expect(PasswordValidator.isValid('lala0')).toEqual({
-        isValid: false,
-        errors: [{
-          type: PasswordValidatorError.MISSING_UPPER_CASE_LETTER
-        }]
+    it.each(['lala0', 'maxwell1_c'])('Knows that %p is missing an upper case letter', (password) => {
+      const result = PasswordValidator.isValid(password);
+
+      expect(result.isValid).toBeFalsy();
+      expect(result.errors).toContainEqual({
+        type: PasswordValidatorError.MISSING_UPPER_CASE_LETTER
       })
     })
   });
@@ -59,10 +50,10 @@ describe('PasswordValidator tests', () => {
   });
 
   it('Knows that "Lala0" is a valid password', () => {
-    expect(PasswordValidator.isValid('Lala0')).toEqual({
-      isValid: true,
-      errors: []
-    })
+    const result = PasswordValidator.isValid('Lala0');
+
+    expect(result.isValid).toBeTruthy();
+    expect(result.errors).toHaveLength(0);
   })
 })
 
