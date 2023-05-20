@@ -31,5 +31,16 @@ describe('PasswordValidator tests', () => {
       })
     })
   });
+
+  describe('It knows passwords should contain at least one upper case letter', () => {
+    it('Knows that "lala0" is missing an upper case letter', () => {
+      expect(PasswordValidator.isValid('lala0')).toEqual({
+        isValid: false,
+        errors: [{
+          type: 'missing-upper-case-letter'
+        }]
+      })
+    })
+  });
 })
 
