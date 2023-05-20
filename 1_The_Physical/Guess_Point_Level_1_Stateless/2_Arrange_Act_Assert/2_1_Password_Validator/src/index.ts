@@ -1,5 +1,10 @@
 export class PasswordValidator {
   static isValid(password: string) {
-    return;
+    return {
+      isValid: false,
+      errors: [{
+        type: 'invalid-length',
+      }],
+    };
   }
 }
