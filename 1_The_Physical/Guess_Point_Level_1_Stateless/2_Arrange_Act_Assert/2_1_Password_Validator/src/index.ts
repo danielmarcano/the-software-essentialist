@@ -17,36 +17,29 @@ export class PasswordValidator {
   }
 
   static isValid(password: string) {
+    const errors = [];
+
     if (!PasswordValidator.hasDigits(password)) {
-      return {
-        isValid: false,
-        errors: [{
-          type: 'missing-digit',
-        }],
-      }
+      errors.push({
+        type: 'missing-digit',
+      });
     }
 
     if (!PasswordValidator.hasUpperCaseLetter(password)) {
-      return {
-        isValid: false,
-        errors: [{
-          type: 'missing-upper-case-letter',
-        }],
-      }
+      errors.push({
+        type: 'missing-upper-case-letter',
+      });
     }
 
     if (!PasswordValidator.hasValidLength(password)) {
-      return {
-        isValid: false,
-        errors: [{
-          type: 'invalid-length',
-        }],
-      }
+      errors.push({
+        type: 'invalid-length',
+      });
     }
 
     return {
-      isValid: true,
-      errors: [],
+      isValid: errors.length === 0,
+      errors,
     };
   }
 }
