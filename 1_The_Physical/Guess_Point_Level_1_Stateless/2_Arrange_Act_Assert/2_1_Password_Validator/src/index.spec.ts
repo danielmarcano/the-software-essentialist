@@ -1,4 +1,5 @@
 import { PasswordValidator } from './';
+import { PasswordValidatorError } from './types';
 
 describe('PasswordValidator tests', () => {
   describe('It knows passwords should be between 5 and 15 characters long', () => {
@@ -6,7 +7,7 @@ describe('PasswordValidator tests', () => {
       expect(PasswordValidator.isValid('Lal0')).toEqual({
         isValid: false,
         errors: [{
-          type: 'invalid-length'
+          type: PasswordValidatorError.INVALID_LENGTH
         }]
       })
     })
@@ -15,7 +16,7 @@ describe('PasswordValidator tests', () => {
       expect(PasswordValidator.isValid('Lal0Lal0Lal0Lal0Lal0Lal0Lal0Lal0')).toEqual({
         isValid: false,
         errors: [{
-          type: 'invalid-length'
+          type: PasswordValidatorError.INVALID_LENGTH
         }]
       })
     })
@@ -26,7 +27,7 @@ describe('PasswordValidator tests', () => {
       expect(PasswordValidator.isValid('Lalao')).toEqual({
         isValid: false,
         errors: [{
-          type: 'missing-digit'
+          type: PasswordValidatorError.MISSING_DIGIT
         }]
       })
     })
@@ -37,7 +38,7 @@ describe('PasswordValidator tests', () => {
       expect(PasswordValidator.isValid('lala0')).toEqual({
         isValid: false,
         errors: [{
-          type: 'missing-upper-case-letter'
+          type: PasswordValidatorError.MISSING_UPPER_CASE_LETTER
         }]
       })
     })
@@ -49,10 +50,10 @@ describe('PasswordValidator tests', () => {
 
       expect(result.isValid).toBeFalsy();
       expect(result.errors).toContainEqual({
-        type: 'missing-digit'
+        type: PasswordValidatorError.MISSING_DIGIT
       })
       expect(result.errors).toContainEqual({
-        type: 'missing-upper-case-letter'
+        type: PasswordValidatorError.MISSING_UPPER_CASE_LETTER
       })
     })
   });

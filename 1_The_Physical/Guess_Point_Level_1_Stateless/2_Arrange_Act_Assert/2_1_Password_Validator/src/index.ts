@@ -1,3 +1,5 @@
+import { PasswordValidatorError } from "./types";
+
 export class PasswordValidator {
   static DIGITS_REG_EX = /\d/;
   static UPPER_CASE_LETTER_REG_EX = /[A-Z]/;
@@ -21,19 +23,19 @@ export class PasswordValidator {
 
     if (!PasswordValidator.hasDigits(password)) {
       errors.push({
-        type: 'missing-digit',
+        type: PasswordValidatorError.MISSING_DIGIT,
       });
     }
 
     if (!PasswordValidator.hasUpperCaseLetter(password)) {
       errors.push({
-        type: 'missing-upper-case-letter',
+        type: PasswordValidatorError.MISSING_UPPER_CASE_LETTER,
       });
     }
 
     if (!PasswordValidator.hasValidLength(password)) {
       errors.push({
-        type: 'invalid-length',
+        type: PasswordValidatorError.INVALID_LENGTH,
       });
     }
 
