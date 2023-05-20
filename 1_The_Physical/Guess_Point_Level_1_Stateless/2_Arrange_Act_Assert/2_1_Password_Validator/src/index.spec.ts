@@ -43,6 +43,20 @@ describe('PasswordValidator tests', () => {
     })
   });
 
+  describe('It knows passwords can be invalid for several reasons', () => {
+    it('Knows that "lala" is missing an upper case letter and has an invalid length', () => {
+      const result = PasswordValidator.isValid('lala');
+
+      expect(result.isValid).toBeFalsy();
+      expect(result.errors).toContainEqual({
+        type: 'missing-digit'
+      })
+      expect(result.errors).toContainEqual({
+        type: 'missing-upper-case-letter'
+      })
+    })
+  });
+
   it('Knows that "Lala0" is a valid password', () => {
     expect(PasswordValidator.isValid('Lala0')).toEqual({
       isValid: true,
