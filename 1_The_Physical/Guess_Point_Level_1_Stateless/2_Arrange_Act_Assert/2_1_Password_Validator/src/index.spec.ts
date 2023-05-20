@@ -42,5 +42,12 @@ describe('PasswordValidator tests', () => {
       })
     })
   });
+
+  it('Knows that "Lala0" is a valid password', () => {
+    expect(PasswordValidator.isValid('Lala0')).toEqual({
+      isValid: true,
+      errors: []
+    })
+  })
 })
 
