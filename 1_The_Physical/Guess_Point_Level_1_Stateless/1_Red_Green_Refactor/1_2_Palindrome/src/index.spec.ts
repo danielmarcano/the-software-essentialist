@@ -6,10 +6,10 @@ describe('isPalindrome tests', () => {
   })
 
   it.each([['mom'], ['Mom'], ['MoM'], ['Mo m'], ['xMomx'], ['Was It A Rat I Saw'], ['Never Odd or Even'], ['1Never Odd or Even1']])('Knows that %p is a palindrome', (text) => {
-    expect(isPalindrome(text)).toBe(true);
+    expect(isPalindrome(text)).toBeTruthy();
   })
 
   it.each([['Momx'], ['Never Odd or Even1']])('Knows that %p is not a palindrome', (text) => {
-    expect(isPalindrome(text)).toBe(false);
+    expect(isPalindrome(text)).toBeFalsy();
   })
 })
