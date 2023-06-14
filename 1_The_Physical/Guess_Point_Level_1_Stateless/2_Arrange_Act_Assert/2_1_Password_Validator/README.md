@@ -7,6 +7,14 @@
 > Contains at least one upper case letter
 > Return an object containing a boolean result and an errors key that — when provided with an invalid password — contains an error message or type for all errors in occurrence. There can be multiple errors at a single time.
 
+Examples:
+
+- 'Lalos' is missing a digit
+- 'lal0s' is missing an upper case letter
+- 'lal0' is too short
+- 'Lalalalalalalala0' is too long
+- 'MySecret0' is valid
+
 ## Getting started
 
 To set up the project, run the following command:
