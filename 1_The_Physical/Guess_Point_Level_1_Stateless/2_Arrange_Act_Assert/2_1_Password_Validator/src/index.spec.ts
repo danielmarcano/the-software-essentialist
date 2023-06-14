@@ -4,6 +4,7 @@ import { PasswordValidatorError } from './types';
 describe('PasswordValidator.isValid tests', () => {
   describe('It knows passwords should be between 5 and 15 characters long', () => {
     it.each(['Lal0', 'Lal0Lal0Lal0Lal0Lal0Lal0Lal0Lal0', 'thePhysical1234567'])('Knows that %p has an invalid length', (password) => {
+      PasswordValidator.MINIMUM_LENGTH = 0;
       const result = PasswordValidator.isValid(password);
 
       expect(result.isValid).toBeFalsy();
@@ -36,15 +37,16 @@ describe('PasswordValidator.isValid tests', () => {
   });
 
   describe('It knows passwords can be invalid for several reasons', () => {
-    it('Knows that "lala" is missing an upper case letter and has an invalid length', () => {
-      const result = PasswordValidator.isValid('lala');
+    it('Knows that "lal0" is missing an upper case letter and has an invalid length', () => {
+      const result = PasswordValidator.isValid('lal0');
+
 
       expect(result.isValid).toBeFalsy();
       expect(result.errors).toContainEqual({
-        type: PasswordValidatorError.MISSING_DIGIT
+        type: PasswordValidatorError.MISSING_UPPER_CASE_LETTER
       })
       expect(result.errors).toContainEqual({
-        type: PasswordValidatorError.MISSING_UPPER_CASE_LETTER
+        type: PasswordValidatorError.INVALID_LENGTH
       })
     })
   });
