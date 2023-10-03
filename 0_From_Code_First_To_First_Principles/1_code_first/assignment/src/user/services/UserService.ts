@@ -71,6 +71,18 @@ class UserService {
     return rest;
   }
 
+  async getUserByEmail(email: User['email']) {
+    const existingUser = await this.userRepository.findUserByAnyQueryProperty({ email });
+
+    if (!existingUser) {
+      throw new Error(UserError.USER_NOT_FOUND);
+    }
+
+    const { password, ...rest } = existingUser;
+
+    return rest;
+  }
+
   private generateRandomPassword() {
     return crypto.randomUUID();
   }

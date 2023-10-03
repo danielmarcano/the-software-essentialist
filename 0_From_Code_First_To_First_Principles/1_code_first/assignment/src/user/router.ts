@@ -18,3 +18,5 @@ router.use((req: UserRequest, _, next) => {
 router.post('/new', (req: UserRequest, res) => req.userController?.createUser(req, res));
 
 router.put('/edit/:userId', (req: UserRequest, res) => req.userController?.editUser(req, res));
+
+router.get('/', (req: UserRequest, res) => req.userController?.getUserByEmail(req, res));

@@ -33,7 +33,7 @@ class UserController {
     try {
       const user = await this.userService.updateUser({ ...userData, id: Number(userId) });
 
-      res.status(201).json({ error: undefined, data: user, success: true });
+      res.status(200).json({ error: undefined, data: user, success: true });
     } catch (error) {
       if (error instanceof Error) {
         if (error.message === UserError.USER_NOT_FOUND) {
@@ -42,6 +42,24 @@ class UserController {
           res.status(409).json({ error: error.message, data: undefined, success: false });
         } else if (error.message === UserError.VALIDATION_ERROR) {
           res.status(400).json({ error: error.message, data: undefined, success: false });
+        } else {
+          res.status(500).json({ error: 'InternalError', data: undefined, success: false });
+        }
+      }
+    }
+  }
+
+  async getUserByEmail(req: Request, res: Response) {
+    const { email } = req.query;
+
+    try {
+      const user = await this.userService.getUserByEmail(email as string);
+
+      res.status(200).json({ error: undefined, data: user, success: true });
+    } catch (error) {
+      if (error instanceof Error) {
+        if (error.message === UserError.USER_NOT_FOUND) {
+          res.status(404).json({ error: error.message, data: undefined, success: false });
         } else {
           res.status(500).json({ error: 'InternalError', data: undefined, success: false });
         }
