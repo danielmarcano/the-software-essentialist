@@ -1,0 +1,31 @@
+services:
+  postgres-db:
+    # Use the PostgreSQL 15.4 official image as the base image
+    image: postgres:15.4
+
+    # Always restart the container if it stops or encounters an issue
+    restart: always
+
+    # Define environment variables for PostgreSQL configuration
+    environment:
+      # Specify the name of the PostgreSQL database
+      POSTGRES_DB: ${POSTGRES_DB}
+
+      # Specify the PostgreSQL user
+      POSTGRES_USER: ${POSTGRES_USER}
+
+      # Specify the password for the PostgreSQL user
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    # Mount a Docker volume to persist PostgreSQL data
+    volumes:
+      # Map the "postgres_data" volume to store database data
+      - postgres_data:/var/lib/postgresql/data
+
+    # Expose port on the host to allow connections to PostgreSQL
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+
+# Define a named Docker volume to store PostgreSQL data persistently
+volumes:
+  postgres_data:
