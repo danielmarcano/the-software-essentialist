@@ -15,4 +15,6 @@ router.use((req: UserRequest, _, next) => {
   next();
 });
 
-router.post('/new', (req: UserRequest, res) => req.userController?.createUser(req, res))
+router.post('/new', (req: UserRequest, res) => req.userController?.createUser(req, res));
+
+router.put('/edit/:userId', (req: UserRequest, res) => req.userController?.editUser(req, res));
