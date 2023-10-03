@@ -163,4 +163,31 @@ describe('UserService', () => {
       expect(result).toMatchObject(updatedUser);
     });
   });
-})
+
+  describe('getUserByEmail', () => {
+    it('does not return a user if it cannot find it', () => {
+      const email = 'daniel@test.com';
+
+      mockFindUserByAnyQueryProperty.mockReturnValue(null);
+
+      const userService = new UserService(new PrismaUserRepository());
+
+      expect(() => userService.getUserByEmail(email)).rejects.toThrow(UserError.USER_NOT_FOUND);
+    });
+
+    it('gets a user successfully if the email sent matches an existing user', async () => {
+      const email = 'daniel@test.com';
+
+      const foundUser = {
+        id: 1,
+        email,
+      } as User;
+
+      mockFindUserByAnyQueryProperty.mockReturnValue(foundUser);
+
+      const result = await new UserService(new PrismaUserRepository()).getUserByEmail(email);
+
+      expect(result).toMatchObject(foundUser);
+    });
+  });
+});
