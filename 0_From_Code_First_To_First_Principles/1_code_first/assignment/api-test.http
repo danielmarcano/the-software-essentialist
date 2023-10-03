@@ -1,0 +1,25 @@
+// API Requests to test with REST Client VS Code extension
+// You can download it here: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+POST http://127.0.0.1:3000/users/new
+Content-Type: application/json
+
+{
+  "email": "danieltest@test.com",
+  "firstName": "Daniel",
+  "lastName": "Marcano",
+  "username": "danielother"
+}
+
+PUT http://127.0.0.1:3000/users/edit/1
+Content-Type: application/json
+
+{
+  "email": "danieltest@test.com",
+  "firstName": "Daniel Updated",
+  "lastName": "Marcano Updated",
+  "username": "danielother"
+}
+
+GET http://127.0.0.1:3000/users?email=danieltest@test.com
+Content-Type: application/json
